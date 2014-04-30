@@ -1,0 +1,187 @@
+ul.nav {
+	list-style-type:none;
+	margin: 10px 0 40px;
+	padding:0;
+	position: relative;
+	min-height: 50px;
+	background: #1a1a1a; 
+	height: 50px;
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1);
+}
+
+ul.nav.with-easing li a { transition: background .2s ease-in-out; }
+ul.nav.with-easing li ul a { transition: background .2s ease-in-out; }
+
+ul.nav.nav-static-top {
+  z-index: 1000;
+  border-width: 0 0 1px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  margin: 0;
+}
+
+ul.nav li.pull-right {
+  float: right !important;
+}
+ul.nav li.pull-right:after { clear: both; }
+
+/**
+ * Do I need this?
+ * ul.nav li.pull-right:last-child { margin-right: -15px; } */
+
+ul.nav ul.hidden {
+  position: absolute;
+  /*max-width: 250px;*/
+  min-width: 200px;
+  z-index: 9999;
+  margin: 0;
+  padding:0;
+  border: 1px solid #fafafa;
+}
+
+ul.nav.with-transparency ul.hidden {
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+  filter: alpha(opacity=80);
+  -moz-opacity: 0.8;
+  -khtml-opacity: 0.8;
+  opacity: 0.8;
+}
+
+/*Create a horizontal list with spacing*/
+ul.nav li, ul.nav li.nav-brand {
+	display:block;
+	float: left;
+	margin-right: 1px;
+}
+
+/*Style for menu links*/
+ul.nav li a, ul.nav li.nav-brand a {
+	display:block;
+	min-width:100px;
+	width: auto;
+	height: 50px;
+	text-align: left;
+	line-height: 50px;
+	font-family: 'Open Sans', Calibri, Candara, Arial, sans-serif;
+	color: #fff;
+	background: #1a1a1a;
+	text-decoration: none;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+ul.nav li.nav-brand a {
+  font-size: 25px;
+  background: transparent;
+  color: #fff;
+}
+/*Hover state for top level links*/
+ul.nav li:hover a {
+	background: #00bcf2;
+}
+
+ul.nav li.nav-brand:hover a {
+  background: transparent;
+}
+
+/*Style for dropdown links*/
+ul.nav li:hover ul a {
+	/*background: #3596dd !important;*/
+	color: #1a1a1a !important;
+	height: 40px;
+	line-height: 40px;
+}
+
+/*Hover state for dropdown links*/
+ul.nav li:hover ul a:hover {
+	background: #00bcf2 !important;
+	color: #fff !important;
+}
+
+/*Hide dropdown links until they are needed*/
+ul.nav li ul {
+	display: none;
+}
+
+/*Make dropdown links vertical*/
+ul.nav li ul li {
+	display: block;
+	float: none;
+}
+
+/*Prevent text wrapping*/
+ul.nav li ul li a {
+	width: auto;
+	min-width: 100px;
+	padding: 0 20px;
+}
+
+/*Display the dropdown on hover*/
+ul.nav li a:hover + .hidden, .hidden:hover {
+	display: block;
+}
+
+/*Style 'show menu' link and hide it by default*/
+a.nav-toggle {
+  font-family: 'Open Sans', Calibri, Candara, Arial, sans-serif;	
+	text-decoration: none;
+	font-size: 25px;
+	line-height: 30px;
+	color: #fff;
+	background: #1a1a1a;
+	text-align: left;
+	padding-top: 10px;
+	padding-left: 15px;
+	margin: 0;
+	display: none;
+	height: 50px;
+}
+
+ul.nav li.nav-brand .nav-toggle {
+  display: none;
+  color: #fff;
+}
+
+a.nav-toggle:after {
+  float: right;
+  padding-right: 20px;
+  font-family: FontAwesome;
+  content: "\f03a";
+  clear:both;
+}
+
+ul.nav li ul li a {
+  background: #fafafa !important; 
+}
+
+/*Responsive Styles*/
+
+@media screen and (max-width : 760px){
+	/*Make dropdown links appear inline*/
+	ul.nav {
+		position: static;
+		display: none;
+	}
+	/*Create vertical spacing*/
+	ul.nav li.nav-brand { display: none; }
+	/*Make all menu links full width*/
+	ul.nav li, ul.nav li a {
+		width: 100%;
+	}
+	/*Display 'show menu' link*/
+	a.nav-toggle { display: block; }
+	
+	ul.nav ul.hidden { position: relative; }
+	ul.nav li { float: left; }
+	ul.nav li.pull-right:last-child {
+	  margin-right: 0;
+	}
+  div.pull-right {
+	  display:inline-block;
+	  float: none !important;
+	  margin-right: 0;
+    width: 100%;
+  }
+}
