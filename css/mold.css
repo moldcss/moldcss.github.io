@@ -666,7 +666,7 @@ pre {
           box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
 }
 .panel-body {
-  padding: 15px;
+  padding: 10px;
 }
 .panel-heading {
   padding: 10px 15px;
@@ -691,6 +691,29 @@ pre {
   background-color: #f5f5f5;
   border-top: 1px solid #ddd;
 }
+
+.panel-body > ul.panel-nav {
+  list-style: none;
+}
+
+.panel-body > ul.panel-nav.with-easing > li:hover {
+  transition: background .2s ease-in-out;
+}
+
+.panel-body > ul.panel-nav > li {
+  display:block;
+  padding: 12px 20px;
+}
+
+.panel-body > ul.panel-nav > li:hover {
+  cursor: pointer;
+  background: #00bcf2; 
+}
+
+.panel-body > ul.panel-nav > li:hover a {
+  color: #fff;
+}
+
 /* Service boxes */
 .service-box > .icon { text-align: center; position: relative; }
 .service-box > .icon > .image { position: relative; z-index: 2; margin: auto; width: 88px; height: 88px; border: 8px solid white; line-height: 88px; border-radius: 50%; background: #7FBA00; vertical-align: middle; }
