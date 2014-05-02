@@ -326,12 +326,14 @@ img.with-easing:hover {
 
   .col-six {
     width: 100%;
+    clear: both;
+    margin-top: 15px;
   }
 
   .col-three {
     width: 50%;
-    padding-right: 0;
-    padding-left: 0;
+    /*padding-right: 0;
+    padding-left: 0;*/
   }
 
   .col-three:nth-child(3) {
