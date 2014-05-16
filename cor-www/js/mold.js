@@ -23,4 +23,9 @@ $(function() {
     fade.hide();
     $('.modal-open').hide('fade');
   });
+  
+  // Template related crap
+  $('.toggle-login').click(function() {
+    $('.login-box').slideToggle();
+  });
 });
