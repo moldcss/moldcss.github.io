@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>WTF Meme</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/css/mold.css">
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <h2>Meme text on tap</h2>
+        <ul id="meme-list"></ul>
+        <a href="javascript:;" class="btn btn-primary gen-meme">Generate</a>
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript">
+    var memeList = $('#meme-list'),
+        genMeme  = $('.gen-meme');
+    
+    genMeme.click(function() {
+        $.getJSON('http://api.automeme.net/text.json', function (json) {
+            for (var i = 0; i < json.length; i++) {
+                memeList.append("<li>" + json[i] + "</li>");
+            }
+        });
+    });
+  </script>
+</html>
