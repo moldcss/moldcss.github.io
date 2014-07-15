@@ -20,7 +20,10 @@
         genMeme  = $('.gen-meme');
     
     genMeme.click(function() {
+        memeList.empty();
+        memeList.append("<li style=\"bullet-style-list:none\"> Please wait, I'm just fetching some data for you...</li>");
         $.getJSON('http://api.automeme.net/text.json', function (json) {
+            memeList.empty();
             for (var i = 0; i < json.length; i++) {
                 memeList.append("<li>" + json[i] + "</li>");
             }
