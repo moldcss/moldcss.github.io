@@ -376,18 +376,20 @@ JSPanoViewer.prototype = {
 		};
 
         // touch devices
-        controller.ontouchstart = function(event) {
+        controller.addEventListener('touchstart', function(event) {
             if(typeof(event) == 'undefined') event = window.event;
             controller.mouseDown = true;
             controller.lastX = event.clientX;
             controller.lastY = event.clientY;
             return false; // Prevent default behaviour
-        };
-        controller.ontouchend = function(event) {
+        });
+
+        controller.addEventListener('touchend', function(event) {
             controller.mouseDown = false;
             return false; // Prevent default behaviour
-        };
-        controller.ontouchmove = function(event) {
+        });
+
+        controller.addEventListener('touchmove', function(event) {
             if(typeof(event) == 'undefined') event = window.event;
             if(controller.mouseDown) {
                 var degrees = (controller.lastX - event.clientX) / 5;
@@ -396,7 +398,7 @@ JSPanoViewer.prototype = {
                 controller.lastY = event.clientY;
             }
             return false; // Prevent default behaviour
-        };
+        });
 	},
 	loadCss:function() {
 		var cssDimension = "";
