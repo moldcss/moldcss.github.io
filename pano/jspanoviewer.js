@@ -232,6 +232,20 @@ JSPanoViewer.prototype = {
 		for(i in this.slices) {
 			this.slices[i].src = this.imageUrl;
 		}
+
+        // autoPlay was enabled
+        if (this.autoPlay) {
+            var self = this;
+            setInterval(function() { self.shiftPano(1); }, 60);
+        }
+
+        if (this.autoPlayOnTouchDevice) {
+            var is_touch_device = 'ontouchstart' in document.documentElement;
+            if (is_touch_device) {
+                var self = this;
+                setInterval(function() { self.shiftPano(1); }, 60);
+            }
+        }
 	},
 	setMode:function(mode) {
 		// Default value
@@ -380,8 +394,8 @@ JSPanoViewer.prototype = {
             console.log("Touch started");
             if(typeof(event) == 'undefined') event = window.event;
             controller.touchStart = true;
-            controller.lastX = event.touches[0].pageX;
-            controller.lastY = event.touches[0].pageY;
+            controller.lastX = event.touches[0].clientX;
+            controller.lastY = event.touches[0].clientY;
             return false; // Prevent default behaviour
         });
 
@@ -393,10 +407,10 @@ JSPanoViewer.prototype = {
         controller.addEventListener('touchmove', function(event) {
             if(typeof(event) == 'undefined') event = window.event;
             if(controller.touchStart) {
-                var degrees = (controller.lastX - event.touches[0].pageX / 5);
+                var degrees = (controller.lastX - event.touches[0].clientX / 5);
                 self.shiftPano(degrees);
-                controller.lastX = event.touches[0].pageX;
-                controller.lastY = event.touches[0].pageY;
+                controller.lastX = event.touches[0].clientX;
+                controller.lastY = event.touches[0].clientY;
             }
             return false; // Prevent default behaviour
         });
