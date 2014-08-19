@@ -380,8 +380,8 @@ JSPanoViewer.prototype = {
             console.log("Touch started");
             if(typeof(event) == 'undefined') event = window.event;
             controller.touchStart = true;
-            controller.lastX = event.touches[0].clientX;
-            controller.lastY = event.touches[0].clientY;
+            controller.lastX = event.touches[0].pageX;
+            controller.lastY = event.touches[0].pageY;
             return false; // Prevent default behaviour
         });
 
@@ -393,10 +393,10 @@ JSPanoViewer.prototype = {
         controller.addEventListener('touchmove', function(event) {
             if(typeof(event) == 'undefined') event = window.event;
             if(controller.touchStart) {
-                var degrees = (controller.lastX - event.touches[0].clientX / 5);
+                var degrees = (controller.lastX - event.touches[0].pageX / 5);
                 self.shiftPano(degrees);
-                controller.lastX = event.touches[0].clientX;
-                controller.lastY = event.touches[0].clientY;
+                controller.lastX = event.touches[0].pageX;
+                controller.lastY = event.touches[0].pageY;
             }
             return false; // Prevent default behaviour
         });
