@@ -374,6 +374,29 @@ JSPanoViewer.prototype = {
 			}
 			return false; // Prevent default behaviour
 		};
+
+        // touch devices
+        controller.ontouchstart = function(event) {
+            if(typeof(event) == 'undefined') event = window.event;
+            controller.mouseDown = true;
+            controller.lastX = event.clientX;
+            controller.lastY = event.clientY;
+            return false; // Prevent default behaviour
+        };
+        controller.ontouchend = function(event) {
+            controller.mouseDown = false;
+            return false; // Prevent default behaviour
+        };
+        controller.ontouchmove = function(event) {
+            if(typeof(event) == 'undefined') event = window.event;
+            if(controller.mouseDown) {
+                var degrees = (controller.lastX - event.clientX) / 5;
+                self.shiftPano(degrees);
+                controller.lastX = event.clientX;
+                controller.lastY = event.clientY;
+            }
+            return false; // Prevent default behaviour
+        };
 	},
 	loadCss:function() {
 		var cssDimension = "";
