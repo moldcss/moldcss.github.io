@@ -392,13 +392,12 @@ JSPanoViewer.prototype = {
 
         controller.addEventListener('touchmove', function(event) {
             if(typeof(event) == 'undefined') event = window.event;
-            //if(controller.touchStart) {
+            if(controller.touchStart) {
                 var degrees = (controller.lastX - event.touches[0].clientX / 5);
-                self.shiftPano(degrees);
+                self.shiftPano(degrees+20);
                 controller.lastX = event.touches[0].clientX;
                 controller.lastY = event.touches[0].clientY;
-                setTimeout(function() { return false; }, 250);
-            //}
+            }
             return false; // Prevent default behaviour
         });
 	},
