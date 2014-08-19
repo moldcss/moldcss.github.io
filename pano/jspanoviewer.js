@@ -393,7 +393,7 @@ JSPanoViewer.prototype = {
         controller.addEventListener('touchmove', function(event) {
             if(typeof(event) == 'undefined') event = window.event;
             if(controller.touchStart) {
-                var degrees = (controller.lastX - event.touches[0].clientX) / 5;
+                var degrees = (controller.lastX - event.touches[0].clientX);
                 self.shiftPano(degrees);
                 controller.lastX = event.touches[0].clientX;
                 controller.lastY = event.touches[0].clientY;
