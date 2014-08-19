@@ -397,6 +397,7 @@ JSPanoViewer.prototype = {
                 self.shiftPano(degrees);
                 controller.lastX = event.touches[0].clientX;
                 controller.lastY = event.touches[0].clientY;
+                setTimeout(function() { return false; }, 250);
             //}
             return false; // Prevent default behaviour
         });
