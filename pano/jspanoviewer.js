@@ -377,25 +377,26 @@ JSPanoViewer.prototype = {
 
         // touch devices
         controller.addEventListener('touchstart', function(event) {
+            console.log("Touch started");
             if(typeof(event) == 'undefined') event = window.event;
-            controller.mouseDown = true;
-            controller.lastX = event.clientX;
-            controller.lastY = event.clientY;
+            controller.touchStart = true;
+            controller.lastX = event.touches[0].clientX;
+            controller.lastY = event.touches[0].clientY;
             return false; // Prevent default behaviour
         });
 
         controller.addEventListener('touchend', function(event) {
-            controller.mouseDown = false;
+            controller.touchStart = false;
             return false; // Prevent default behaviour
         });
 
         controller.addEventListener('touchmove', function(event) {
             if(typeof(event) == 'undefined') event = window.event;
-            if(controller.mouseDown) {
-                var degrees = (controller.lastX - event.clientX) / 5;
+            if(controller.touchStart) {
+                var degrees = (controller.lastX - event.touches[0].clientX) / 5;
                 self.shiftPano(degrees);
-                controller.lastX = event.clientX;
-                controller.lastY = event.clientY;
+                controller.lastX = event.touches[0].clientX;
+                controller.lastY = event.touches[0].clientY;
             }
             return false; // Prevent default behaviour
         });
