@@ -1,0 +1,31 @@
+body {
+  background: url("http://css.elderscrollsonline.com/img/bg-ic-2.jpg") top center no-repeat;
+  background-size: 100%;
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+.content-box {
+  background: rgba(255,255,255,0.6);
+  margin: 0 auto;
+  width: 50%;
+  padding: 15px 15px 15px 30px;
+  margin-bottom: 15px;
+}
+
+.btn.btn-primary {
+  background: #105eab;
+  color: #fff;
+}
+
+.btn.btn-primary:hover { background: #0A3661; }
+
+.results { display: none; }
+
+.table {
+  font-size: 19px;
+  line-height: 25px;
+}
